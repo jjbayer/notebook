@@ -33,7 +33,7 @@ cd /path/to/workspace/notebook
 python manage.py runserver 8421
 ```
 
-2. Navigate your browser to [](http://localhost:8421).
+2. Navigate your browser to http://localhost:8421.
 
 ## TODO
 
