@@ -2,6 +2,8 @@
 
 Searchable notebook with markdown syntax.
 
+![Screenshot of notebook](docs/screenshot.png)
+
 ## Requirements
 
 * Python 3.6
@@ -37,5 +39,6 @@ python manage.py runserver 8421
 
 ## TODO
 
+- [ ] Pagination
 - [ ] Keyboard shortcut to save note
 - [ ] Syntax highlighting in editor
