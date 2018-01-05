@@ -2,8 +2,6 @@
 
 Searchable notebook with markdown syntax.
 
-![Screenshot of notebook](docs/screenshot.png)
-
 ## Requirements
 
 * Python 3.6
