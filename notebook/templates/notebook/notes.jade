@@ -1,0 +1,85 @@
+{% extends "notebook/bootstrap.html" %}
+{% load i18n %}
+
+{% block app_content %}
+
+.container
+
+
+    .row
+
+        h1 Notebook
+
+        h2 Search
+
+        form.form-inline(method="get", action="#")
+            .input-group
+                input.form-control(type="text", placeholder="search", name="search", value="{{ search }}")
+            .input-group
+                input.btn.btn-primary(type="Submit", value="Search")
+
+        h2 New note
+
+        form.form-horizontal(method="post", action="{% url 'create' %}")
+            {% csrf_token %}
+            //- .form-group
+            textarea.form-control#new-note(placeholder="e.g. *Very* important: ", name="content", autofocus="autofocus")
+            input.form-control.btn.btn-primary(type="Submit")
+
+        if notes
+
+            #notes
+
+                h2 Notes
+
+                if notes.num_pages > 1
+                    p
+                        .btn-toolbar
+                            .btn-group
+                                if notes.has_previous
+                                    a.btn.btn-default(href="?page={{ notes.previous_page_number }}")
+                                        - trans "newer"
+
+                                span.btn.btn-default.disabled
+                                    = notes.number
+                                if notes.has_next
+                                    a.btn.btn-default(href="?page={{ notes.next_page_number }}")
+                                        - trans "older"
+
+                for note in notes
+                    .panel.panel-default.note(id="note-{{ note.id }}")
+
+                        .panel-heading.clearfix
+                            .pull-left
+                                {{note.id }} | {{ note.creation_date }}
+                            .pull-right
+                                ul.list-inline.note-menu
+                                    li
+                                        a.edit-note(href="#", title="{% trans 'edit' %}")
+                                            i.glyphicon.glyphicon-pencil
+                                    li
+                                        a(href="{% url 'delete' note.id %}", title="{% trans 'delete' %}")
+                                            i.glyphicon.glyphicon-trash
+                        .panel-body
+
+                            .note-content
+                                {{ note.content }}
+
+                            form.form-horizontal.note-form-edit(
+                                    method="post",
+                                    action="{% url 'update' %}")
+                                {% csrf_token %}
+                                input(
+                                    type="hidden",
+                                    name="id",
+                                    value="{{ note.id }}")
+                                textarea.form-control(name="content")
+                                        {{ note.content }}
+                                input.form-control.btn.btn-default(type="Submit", value="{%trans 'Save' %}")
+
+
+
+        else
+            i No notes found
+
+{% endblock %}

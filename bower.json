@@ -1,0 +1,22 @@
+{
+  "name": "notebook",
+  "homepage": "https://github.com/jjbayer/notebook",
+  "authors": [
+    "Joris Bayer <jjbayer@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "notebook/static/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "showdown": "^1.8.6"
+  }
+}

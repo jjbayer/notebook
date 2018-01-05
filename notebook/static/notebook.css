@@ -1,0 +1,38 @@
+
+
+.panel.note {
+    /*background-color: #eff;*/
+}
+
+.note .panel-heading {
+    font-size: 12px;
+}
+
+#new-note {
+    height: 200px;
+}
+
+.note-menu {
+    margin-bottom: 0
+}
+
+.note .note-form-edit {
+    display: none;
+}
+
+.note.edit-mode .note-content {
+    display: none;
+}
+
+
+.note.edit-mode .note-form-edit {
+    display: block;
+}
+
+.note textarea {
+    height: 200px;
+}
+
+.note.edit-mode a.edit-note {
+    color: red;
+}

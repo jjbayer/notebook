@@ -1,0 +1,6 @@
+db.sqlite3
+*sublime-project
+*sublime-workspace
+__pycache__
+bower_components
+.static
