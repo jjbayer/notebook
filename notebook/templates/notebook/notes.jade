@@ -32,19 +32,15 @@
 
                 h2 Notes
 
-                if notes.num_pages > 1
-                    p
-                        .btn-toolbar
-                            .btn-group
-                                if notes.has_previous
-                                    a.btn.btn-default(href="?page={{ notes.previous_page_number }}")
-                                        - trans "newer"
-
-                                span.btn.btn-default.disabled
-                                    = notes.number
-                                if notes.has_next
-                                    a.btn.btn-default(href="?page={{ notes.next_page_number }}")
-                                        - trans "older"
+                .btn-toolbar
+                    .btn-group
+                        for page in notes.paginator.page_range
+                            if notes.number == page
+                                span.btn.btn-default.disabled {% trans 'Page' %} {{ notes.number }}
+                            else
+                                a.btn.btn-default(href="?page={{ page }}")
+                                    = page
+                p
 
                 for note in notes
                     .panel.panel-default.note(id="note-{{ note.id }}")

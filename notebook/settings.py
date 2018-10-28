@@ -183,3 +183,5 @@ PIPELINE = dict(
     #     'pipeline.compilers.sass.SASSCompiler',
     # ),
 )
+
+PAGE_SIZE = 3

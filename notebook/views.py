@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, HttpResponseRedirect, resolve_url
 
@@ -16,7 +17,7 @@ def notes(request):
             context['search'] = data['search']
             qs = qs.filter(content__icontains=data['search'])
 
-    paginator = Paginator(qs, 10)
+    paginator = Paginator(qs, settings.PAGE_SIZE)
 
     page = request.GET.get('page')
     try:
